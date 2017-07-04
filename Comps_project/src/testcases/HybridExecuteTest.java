@@ -97,6 +97,7 @@ public void teardown()
 	
 	//webdriver.close();
 	webdriver.quit();
+	System.out.println("ALL TEST RUN SUCCESSFULLY");
 	
 }
 	}

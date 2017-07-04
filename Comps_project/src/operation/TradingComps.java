@@ -5,9 +5,12 @@ import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class TradingComps extends Getobjectclass
 
@@ -62,10 +65,20 @@ public class TradingComps extends Getobjectclass
 		WebElement element2=driver.findElement(this.getObject(p, objectname, objectType));
 		Select se2=new Select(element2);
 		se2.selectByVisibleText(value);;
+		break;
 		
+	case"ASSERTPAGING":
+		String actualpage=driver.findElement(this.getObject(p, objectname, objectType)).getText();
+		Assert.assertEquals(actualpage, "1 - 2 of 2 items");
+		break;
+		
+	case "DOUBLECLICK":
+		Actions act = new Actions(driver);
+		act.doubleClick(driver.findElement(this.getObject(p, objectname, objectType))).build().perform();
 		break;
 		default:
 			break;
 	}
 		}
-}
+	
+	}
